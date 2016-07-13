@@ -34,11 +34,11 @@ This library greatly simplifies writing integration tests for projects employing
 ```
 
 ### Create your test class:
-* Extend [`DbUnitTest`](main/java/org/plukh/dbunitguice/dbunit/DbUnitTest.java) class.
+* Extend [`DbUnitTest`](src/main/java/org/plukh/dbunitguice/dbunit/DbUnitTest.java) class.
 * Add `@GuiceModules(<your module classes here>)` - note that all modules have to have public no-args constructors.
-* Optionally, add `@DataSets` annotation (either on the class itself or on individual test methods); set `override` to `true` for method datasets to completely replace class datasets (by default, they're combined together). `DbUnitTest` expects standard [`XmlDataSet`](http://dbunit.sourceforge.net/components.html) dataset files - see [library tests](test/resources/org/plukh/dbunitguice/dbunit) for some examples.
-* See [`DbUnitTestTest`](test/java/org/plukh/dbunitguice/dbunit/DbUnitTestTest.java) for examples on how to assert database state after update; [`TestUtils`](/main/java/org/plukh/dbunitguice/util/TestUtils.java) contains helpful methods to assert correctness of ordered and unordered collections returned by your DAO methods.  
+* Optionally, add `@DataSets` annotation (either on the class itself or on individual test methods); set `override` to `true` for method datasets to completely replace class datasets (by default, they're combined together). `DbUnitTest` expects standard [`XmlDataSet`](http://dbunit.sourceforge.net/components.html) dataset files - see [library tests](src/test/resources/org/plukh/dbunitguice/dbunit) for some examples.
+* See [`DbUnitTestTest`](src/test/java/org/plukh/dbunitguice/dbunit/DbUnitTestTest.java) for examples on how to assert database state after update; [`TestUtils`](src/main/java/org/plukh/dbunitguice/util/TestUtils.java) contains helpful methods to assert correctness of ordered and unordered collections returned by your DAO methods.  
 
 ## Note
 
-This specific implementation of `DbUnitTest` is targeted towards MySQL. To make it work with other databases, override `getSetUpOperation()` and `getTearDownOperation()`, adding specific operations required by your database (like, you may want to implement `ALTER TABLE ... DISABLE TRIGGER` for disabling foreign key checks in PostgreSQL, as it doesn't support global check on/off flag).
+This specific implementation of `DbUnitTest` is targeted towards MySQL. To make it work with other databases, override `DbUnitTest#getSetUpOperation()` and `DbUnitTest#getTearDownOperation()`, adding specific operations required by your database (like, you may want to implement `ALTER TABLE ... DISABLE TRIGGER` for disabling foreign key checks in PostgreSQL, as it doesn't support global check on/off flag).
