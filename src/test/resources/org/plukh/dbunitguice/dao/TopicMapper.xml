@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plukh.dbunitguice.dao.TopicMapper">
+
+  <resultMap id="Category" type="Category">
+    <id property="id" column="CAT_ID" />
+    <result property="environmentId" column="ENV_ID" />
+    <result property="name" column="CAT_NAME" />
+    <result property="parentId" column="CAT_PARENT_ID" />
+  </resultMap>
+
+  <resultMap id="Topic" type="Topic">
+    <id property="id" column="TP_ID" />
+    <result property="environmentId" column="ENV_ID" />
+    <result property="updateDate" column="TP_UPDATE_DATE" jdbcType="TIMESTAMP" />
+    <result property="name" column="TP_NAME" />
+  </resultMap>
+
+  <resultMap id="Keyword" type="Keyword">
+    <result property="topicId" column="TP_ID" />
+    <result property="keyword" column="KW_TEXT" />
+  </resultMap>
+
+  <resultMap id="TopicWithKeywords" type="TopicWithKeywords" extends="Topic" />
+
+  <resultMap id="CategoryTopic" type="CategoryTopic">
+    <id property="categoryId" column="CAT_ID" />
+    <id property="topicId" column="TP_ID" />
+  </resultMap>
+
+  <select id="getCategories" resultMap="Category">
+    select CAT_ID, ENV_ID, CAT_PARENT_ID, CAT_NAME, from CATEGORIES where ENV_ID = #{environmentId}
+  </select>
+
+  <select id="getTopicsWithKeywords" resultMap="TopicWithKeywords">
+    <include refid="selectTopicsByEnvironment"/>
+  </select>
+
+  <select id="getKeywords" resultMap="Keyword">
+    select TP_ID, KW_TEXT from TOPICS join KEYWORDS using (TP_ID) where ENV_ID = #{environmentId}
+  </select>
+
+  <delete id="deleteCategoryTopicsByTopic">
+    delete from CATEGORY_TOPICS where TP_ID = #{topicId}
+  </delete>
+
+  <insert id="createCategoryTopicsByTopic">
+    insert into CATEGORY_TOPICS (CAT_ID, TP_ID) values
+      <foreach item="category" collection="categories" separator=",">
+        (#{category.id}, #{topicId})
+      </foreach>
+  </insert>
+
+  <insert id="createKeywords">
+    insert into KEYWORDS (TP_ID, KW_TEXT) values
+    <foreach item="keyword" collection="keywords" separator=",">
+      (#{topicId}, #{keyword})
+    </foreach>
+  </insert>
+
+  <delete id="deleteKeywords">
+    delete from KEYWORDS where TP_ID = #{topicId}
+  </delete>
+
+  <sql id="selectTopicsByEnvironment">
+    select TP_ID, ENV_ID, TP_UPDATE_DATE, TP_NAME
+    from TOPICS where ENV_ID = #{environmentId} order by TP_NAME
+  </sql>
+
+</mapper>

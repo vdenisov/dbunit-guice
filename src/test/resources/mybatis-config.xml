@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+  <settings>
+    <setting name="logImpl" value="LOG4J2"/>
+  </settings>
+
+  <typeAliases>
+    <package name="org.plukh.dbunitguice.dao.entities" />
+  </typeAliases>
+
+  <typeHandlers>
+    <typeHandler handler="org.plukh.dbunitguice.dao.JodaTimeTypeHandler"
+                 javaType="org.joda.time.DateTime" jdbcType="TIMESTAMP" />
+  </typeHandlers>
+
+  <environments default="test">
+    <environment id="test">
+      <transactionManager type="JDBC" />
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://mysql.local:3306/dbunit-guice-test" />
+        <property name="username" value="dbunit-guice-tst" />
+        <property name="password" value="aaaabbbb" />
+        <property name="defaultTransactionIsolationLevel" value="2" /> <!-- READ_COMMITTED -->
+        <property name="poolMaximumActiveConnections" value="10" />
+        <property name="poolMaximumIdleConnections" value="3" />
+        <property name="poolMaximumCheckoutTime" value="7200000" /> <!-- 2 hours -->
+        <property name="poolPingQuery" value="/* ping */ select 1" />
+        <property name="poolPingEnabled" value="true" />
+        <property name="poolPingConnectionsNotUsedFor" value="600000" />
+      </dataSource>
+    </environment>
+  </environments>
+
+  <mappers>
+    <mapper class="org.plukh.dbunitguice.dao.TopicMapper" />
+  </mappers>
+</configuration>

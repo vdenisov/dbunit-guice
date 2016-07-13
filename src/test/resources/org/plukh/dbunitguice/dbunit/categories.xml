@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dataset SYSTEM "/dbunit-dataset.dtd">
+<dataset>
+  <table name="CATEGORIES">
+    <column>CAT_ID</column>
+    <column>ENV_ID</column>
+    <column>CAT_NAME</column>
+    <column>CAT_PARENT_ID</column>
+
+    <row>
+      <value>1</value>
+      <value>test</value>
+      <value>Test Category</value>
+      <null/>
+    </row>
+    <row>
+      <value>2</value>
+      <value>test</value>
+      <value>Test Child</value>
+      <value>1</value>
+    </row>
+  </table>
+</dataset>

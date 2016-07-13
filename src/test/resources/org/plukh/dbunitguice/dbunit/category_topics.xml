@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dataset SYSTEM "/dbunit-dataset.dtd">
+<dataset>
+  <table name="CATEGORY_TOPICS">
+    <column>CAT_ID</column>
+    <column>TP_ID</column>
+
+    <row>
+      <value>1</value>
+      <value>1</value>
+    </row>
+    <row>
+      <value>2</value>
+      <value>2</value>
+    </row>
+  </table>
+</dataset>

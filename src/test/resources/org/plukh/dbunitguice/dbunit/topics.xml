@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dataset SYSTEM "/dbunit-dataset.dtd">
+
+<dataset>
+  <table name="TOPICS">
+    <column>TP_ID</column>
+    <column>ENV_ID</column>
+    <column>TP_UPDATE_DATE</column>
+    <column>TP_NAME</column>
+
+    <row>
+      <value>1</value>
+      <value>test</value>
+      <value>2015-01-01 00:00:00</value>
+      <value>Active Topic</value>
+    </row>
+
+    <row>
+      <value>2</value>
+      <value>test</value>
+      <value>2015-01-01 00:00:00</value>
+      <value>Stopped Topic</value>
+    </row>
+
+    <row>
+      <value>3</value>
+      <value>test</value>
+      <value>2015-01-01 00:00:00</value>
+      <value>Deleted Topic</value>
+    </row>
+
+    <row>
+      <value>4</value>
+      <value>staging</value>
+      <value>2015-01-01 00:00:00</value>
+      <value>Topic from staging environment</value>
+    </row>
+
+  </table>
+</dataset>

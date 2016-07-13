@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/plukh/dbunitguice/dbunit/DataSets.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/plukh/dbunitguice/dbunit/DataSetsWatcher.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/plukh/dbunitguice/dbunit/DbUnitTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/plukh/dbunitguice/dbunit/DisableForeignKeyChecksOperation.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/plukh/dbunitguice/dbunit/EnableForeignKeyChecksOperation.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/plukh/dbunitguice/guice/GuiceJUnitRunner.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/plukh/dbunitguice/guice/GuiceModules.java" charset="UTF-8" />
+  </component>
+</project>
