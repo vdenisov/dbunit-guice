@@ -49,6 +49,8 @@ public abstract class DbUnitTest {
 
     @Rule
     public DataSetsWatcher dataSetsWatcher = new DataSetsWatcher();
+    @Rule
+    public TestClassWatcher testClassWatcher = new TestClassWatcher();
 
     @Inject
     protected SqlSession session;
@@ -93,7 +95,7 @@ public abstract class DbUnitTest {
 
         //Create individual datasets from specified files
         for (int i = 0; i < resources.length; ++i) {
-            XmlDataSet set = new XmlDataSet(this.getClass().getResourceAsStream(resources[i]));
+            XmlDataSet set = new XmlDataSet(testClassWatcher.getTestClass().getResourceAsStream(resources[i]));
             dataSets[i] = set;
         }
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dataset SYSTEM "/dbunit-dataset.dtd">
+<dataset>
+  <table name="ENVIRONMENTS">
+    <column>ENV_ID</column>
+    <column>ENV_FULL_NAME</column>
+
+    <row>
+      <value>staging</value>
+      <value>Staging Environment</value>
+    </row>
+
+  </table>
+</dataset>

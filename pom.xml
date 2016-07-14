@@ -6,7 +6,7 @@
 
   <groupId>org.plukh</groupId>
   <artifactId>dbunit-guice-mybatis</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
 
   <name>${project.groupId}:${project.artifactId}</name>
@@ -65,6 +65,13 @@
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
       <version>${log4j2.version}</version>
+    </dependency>
+    <!-- log4j-slf4j bridge only used when running tests -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>${log4j2.version}</version>
+      <scope>test</scope>
     </dependency>
 
     <!-- Google Guice -->
